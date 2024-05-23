@@ -166,7 +166,7 @@ def edit_profile(request):
         'profile_form': profile_form,
         'userprofile': userprofile,
     }
-    return render(request, 'accounts/edit_profile.html', context)
+    return render(request, 'profiles/edit_profile.html', context)
 
 
 #___________________________________________________________  ChangePasswordView

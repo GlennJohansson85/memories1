@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 
+
 {% block content %}
 <section class="section-conten padding-y bg">
     {% include 'includes/alerts.html' %}
@@ -12,10 +13,22 @@
                         <strong class="d-inline-block mr-3">Edit Profile</strong>
                     </header>
                     <div class="card-body">
-                        <div class="text-right">
-                            {% if userprofile.profile_picture %}
-                            <img src="{{ userprofile.profile_picture.url }}" alt="Profile Picture" width="100" style="border-radius:50%">
-                            {% endif %}
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-row">
+                                    <div class="form-group col-md-5">
+                                        {% if userprofile.profile_picture %}
+                                            <img src="{{ userprofile.profile_picture.url }}" alt="Profile Picture" width="250">
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-4">
+                                        <label for="profile_picture">Change Profile Picture:</label>
+                                        {{ profile_form.profile_picture }}
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <div class="row">
                             <div class="col-md-12">
@@ -37,17 +50,9 @@
                                             {{ user_form.phone_number }}
                                         </div>
                                         <div class="form-group col-md-6">
-                                            <label>Picture:</label>
-                                            {{ profile_form.profile_picture }}
-                                        </div> 
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Address 1:</label>
-                                        {{ profile_form.address_line_1 }}
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Address 2:</label>
-                                        {{ profile_form.address_line_2 }}
+                                            <label>Address</label>
+                                            {{ profile_form.address }}
+                                        </div>
                                     </div>
                                     <div class="form-row">
                                         <div class="form-group col-md-6">
