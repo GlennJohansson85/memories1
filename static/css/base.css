@@ -1,100 +1,146 @@
-/*_____________________________________________________________   OVERALL  */
+/*             CATEGORY          
+***********************/
+
+/*          SUBCATEGORY
+=======================*/
+
+/*      SUB SUBCATEGORY 
+-----------------------*/
+
+/*          Preferences
+¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨*/
+
+/*                                                                FONT
+**********************************************************************/
+/* 2 */
+@font-face {
+  font-family: 'Milford-nLjO';
+  src: url('/static/font/Milford-nLjO.ttf') format('TrueType');
+}
+
+
+
+
+
+/*                                                                BASE
+**********************************************************************/
 html {
   max-width: 1200px!important;
   margin-right: auto;
   margin-left: auto;
 }
 
-/*_____________________________________________________________   NAVBAR  */
-/* Items flexible, center-align */
+
+/*                                                              NAVBAR
+**********************************************************************/
+/*                                                  DROPDOWN
+============================================================*/
+/*      Items flexible, center-align
+¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨*/ 
 .dropdown-item { 
   display: flex;
   align-items: center;
 }
-
- /* Space between badge */
+/*               Space between badge
+¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨*/ 
 .dropdown-item .badge {
   margin-left: 5px;
 }
-
-/* Center the search form */
+/*                                               SEARCH-FIELD
+=============================================================*/
+/*                            Center
+¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨*/
 .mx-auto .search .input-group {
   width: 100%;
 }
-
-/*_______________________ SEARCH INPUT FIELD */
-/* Search input field */
+/*                Color, Shape, Font
+¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨*/ 
 .search-input {
-  background-color: #ffffff; /* background color */
-  color: #000000;            /* text color */
+  background-color: #ffffff;
+  color: #000000;
   border-radius: 0px;
   border: 1px solid #FF70C0;
   font-size: 1rem;
 }
-
-/* Placeholder text color */
+/*                  Placeholder Font
+¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨*/ 
 .search-input::placeholder {
   color: #FF70C0;
 }
-
-
-/*_______________________ SEARCH BUTTON */
-/* Search Icon Color */
+/*                                            BUTTON
+----------------------------------------------------*/
+/*                        Icon color
+¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨*/
 .search-btn .fa-search {
   color: #FF70C0;
 }
-
-/* Search Icon Background Color */
+/*                  Background color
+¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨*/ 
 .search-btn {
   background-color: white;
   border-radius: 0px;
   border: 1px solid #FF70C0;
 }
-
+/*                       Hover color
+¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨*/ 
 .search-btn:hover {
   background-color: #bed4f3;
   border-color: #FF70C0;
 }
-
-/*_______________________ PROFILE IMAGE */
-/* Style for the profile image in the navbar */
+/*                                            PROFILE PICTURE
+=============================================================*/
+/*                             Shape
+¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨*/ 
 .navbar .nav-link img {
   border-radius: 50%;
   width: 30px;
   height: 30px;
 }
-
-/*_______________________________________  SMARTPHONE-VIEW */
-/* Vertically align navbar brand and toggler button */
+/*                                              SMALL SCREENS
+=============================================================*/
+/*                            BRAND + TOGGLER BUTTON
+----------------------------------------------------*/
+/*                    Vertical align
+¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨*/ 
 .navbar-brand,
 .navbar-toggler {
   align-items: center;
   display: flex;
 }
-
-/* Ensure the image fills the height of the navbar-brand */
+/*                                             BRAND
+----------------------------------------------------*/
+/*                              Size
+¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨*/ 
 .navbar-brand img {
   height: 34px;
   width: 135px;
 }
-
-/*_______________________ TOGGLER BUTTON
-/* Size / Position / Shape */
+/*                                    TOGGLER BUTTON
+----------------------------------------------------*/
+ 
+/*           Size / Position / Shape 
+¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨*/ 
 .navbar-toggler {
   padding: 0.1rem 0.5rem;
   font-size: 1.05rem;
   border-radius: 0px;
 }
-
-/* 3 lines - Color */
+/*                     Color - lines
+¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨*/ 
 .navbar-toggler .navbar-toggler-icon {
-  background-image: url(
-    "data:image/svg+xml,%3csvg viewBox='0 0 30 30'xmlns='http://www.w3.org/2000/svg'%3e%3cpath stroke='%23FF70C0' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e"
-    );
+  background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3e%3cpath stroke='%23FF70C0' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
 }
-
-/* Outline - Color / Shape */
+/*           Color - outline / Shape
+¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨*/ 
 .navbar-toggler:focus {
   outline: 2px solid #FF70C0;
   border-radius: 0px;
 }
+/*                                           WELCOME MESSAGE
+============================================================*/
+.welcome-message {
+  color: #000000;
+  font-size: 18px;
+  font-family: "Milford-nLjO";
+}
+
