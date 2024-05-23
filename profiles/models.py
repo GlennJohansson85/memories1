@@ -31,7 +31,7 @@ class ProfileManager(BaseUserManager):
                 last_name = last_name,
         )
         user.is_admin = True
-        user.is_client = True
+        user.is_staff = True
         user.is_active = True
         user.save(using=self._db)
         return user
@@ -52,7 +52,7 @@ class Profile(AbstractBaseUser):
       date_joined = models.DateTimeField(auto_now_add=True)
       last_login = models.DateTimeField(auto_now_add=True)
       is_admin = models.BooleanField(default=False)
-      is_client = models.BooleanField(default=False)
+      is_staff = models.BooleanField(default=False)
       is_active = models.BooleanField(default=False)
 
 
@@ -82,6 +82,7 @@ class UserProfile(models.Model):
       user = models.OneToOneField(Profile, on_delete=models.CASCADE)
       address = models.CharField(blank=True, max_length=100)
       profile_picture = models.ImageField(blank=True, upload_to='userprofile/')
+      address = models.CharField(blank=True, max_length=50)
       city = models.CharField(blank=True, max_length=20)
       country = models.CharField(blank=True, max_length=20)
       
