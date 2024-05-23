@@ -65,7 +65,8 @@ html {
 /*                  Placeholder Font
 ¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨*/ 
 .search-input::placeholder {
-  color: #FF70C0;
+  color: #000;
+  font-family: "Milford-nLjO";
 }
 /*                                            BUTTON
 ----------------------------------------------------*/
