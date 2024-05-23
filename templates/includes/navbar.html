@@ -46,7 +46,7 @@
 
         <!-- Friends Dropdown -->
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="friendsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Friends</a>
+          <a class="nav-link friends-button" href="#" id="friendsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user-friends fa-2x"></i></a>
           <div class="dropdown-menu" aria-labelledby="friendsDropdown">
             <a class="dropdown-item" href="#">Friend 1</a>
             <a class="dropdown-item" href="#">Friend 2</a>
@@ -56,8 +56,8 @@
 
         <!-- Profile Dropdown -->
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="profileDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <img src="{{ profile_picture_url }}" alt="Profile" width="30" style="border-radius: 50%;">
+          <a class="nav-link profile-button" href="#" id="profileDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <img src="{{ profile_picture_url }}" alt="Profile" class="profile-picture">
           </a>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="profileDropdown">
               {% if user.is_authenticated %}

@@ -12,14 +12,12 @@
 
 /*                                                                FONT
 **********************************************************************/
-/* 2 */
+/*                   Welcome-message
+¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨*/ 
 @font-face {
   font-family: 'Milford-nLjO';
   src: url('/static/font/Milford-nLjO.ttf') format('TrueType');
 }
-
-
-
 
 
 /*                                                                BASE
@@ -33,6 +31,11 @@ html {
 
 /*                                                              NAVBAR
 **********************************************************************/
+.navbar {
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  font-family:'Milford-nLjO';
+}
 /*                                                  DROPDOWN
 ============================================================*/
 /*      Items flexible, center-align
@@ -58,7 +61,7 @@ html {
 .search-input {
   background-color: #ffffff;
   color: #000000;
-  border-radius: 0px;
+  border-radius: 5px;
   border: 1px solid #FF70C0;
   font-size: 1rem;
 }
@@ -68,7 +71,29 @@ html {
   color: #000;
   font-family: "Milford-nLjO";
 }
-/*                                            BUTTON
+
+/*                                RESPONSIVE SETTINGS
+----------------------------------------------------*/
+/*                     Large Screens
+¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨*/ 
+@media (min-width: 992px) {
+  .search {
+    width: 160%;
+  }
+}
+/*                     Small Screens
+¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨*/ 
+@media (max-width: 576px) {
+  .search {
+    width: 100%;
+  }
+}
+
+
+
+/*                                                    BUTTONS
+=============================================================*/
+/*                                     SEARCH BUTTON
 ----------------------------------------------------*/
 /*                        Icon color
 ¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨*/
@@ -79,7 +104,7 @@ html {
 ¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨*/ 
 .search-btn {
   background-color: white;
-  border-radius: 0px;
+  border-radius: 5px;
   border: 1px solid #FF70C0;
 }
 /*                       Hover color
@@ -88,17 +113,41 @@ html {
   background-color: #bed4f3;
   border-color: #FF70C0;
 }
-/*                                            PROFILE PICTURE
-=============================================================*/
-/*                             Shape
+/*                            PROFILE PICTURE BUTTON
+----------------------------------------------------*/
+/*                Position, Settings
 ¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨*/ 
-.navbar .nav-link img {
-  border-radius: 50%;
-  width: 30px;
-  height: 30px;
+.profile-button {
+  margin-bottom: -2px;
+  display: inline-block;
+  border: none;
+  padding: 0px;
+  background: none;
+  cursor: pointer;
 }
-/*                                              SMALL SCREENS
-=============================================================*/
+/*                Size, Shape, Hover
+¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨*/ 
+.profile-picture {
+  width: 51px;
+  height: 51px;
+  border-radius: 50%;
+  display: block;
+  transition: box-shadow 0.2s, border 0.2s;
+}
+/*                       Hover color
+¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨*/ 
+.profile-button:hover .profile-picture {
+  box-shadow: 0 0 0 2px #a9c8f3;
+  border: 1px solid #a9c8f3;
+}
+/*                                    FRIENDS BUTTON
+----------------------------------------------------*/
+/*                          Position
+¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨*/ 
+.friends-button {
+  margin-top: 5px;
+}
+
 /*                            BRAND + TOGGLER BUTTON
 ----------------------------------------------------*/
 /*                    Vertical align
@@ -108,7 +157,7 @@ html {
   align-items: center;
   display: flex;
 }
-/*                                             BRAND
+/*                                       BRAND BUTTON
 ----------------------------------------------------*/
 /*                              Size
 ¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨*/ 
@@ -141,7 +190,7 @@ html {
 ============================================================*/
 .welcome-message {
   color: #000000;
-  font-size: 18px;
+  font-size: 20px;
   font-family: "Milford-nLjO";
 }
 
