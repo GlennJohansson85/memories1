@@ -195,4 +195,3 @@ def change_password(request):
 
     return render(request, 'profiles/change_password.html')
 
-
