@@ -1,8 +1,9 @@
-from django.core.exceptions import ValidationError
-from .models import Post, Comment
-from django.contrib.auth.models import User
+from django import forms
+from .models import Post
 
 
+
+#________________________________________________________________________________POSTFORM
 class PostForm(forms.ModelForm):
     class Meta:
         model = Post
@@ -26,22 +27,9 @@ class PostForm(forms.ModelForm):
         return post
 
 
+#________________________________________________________________________________POSTDELETEFORM
 class PostDeleteForm(forms.Form):
     confirm = forms.BooleanField(
         required=True,
         widget=forms.CheckboxInput(attrs={'class': 'form-check-input'}),
     )
-
-
-class CommentForm(forms.ModelForm):
-    class Meta:
-        model = Comment
-        fields = ['text']
-
-    def save(self, user, post, commit=True):
-        comment = super().save(commit=False)
-        comment.user = user
-        comment.post = post
-
-        if commit:
-            comment.save()

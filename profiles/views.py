@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .forms import RegistrationForm, UserForm, UserProfileForm
 from .models import Profile, UserProfile
+from memories1.models import Post
 from django.contrib import messages, auth
 from django.contrib.auth.decorators import login_required
 from django.contrib.sites.shortcuts import get_current_site
@@ -13,19 +14,19 @@ from django.core.mail import EmailMessage
 
 import requests
 
-#___________________________________________________________  RegisterView
+#___________________________________________________________register
 def register(request):
 
     if request.method == 'POST':
         form = RegistrationForm(request.POST)
         if form.is_valid():
-            first_name = form.cleaned_data['first_name']
-            last_name  = form.cleaned_data['last_name']
-            phone_number = form.cleaned_data['phone_number']
-            email = form.cleaned_data['email']
-            password = form.cleaned_data['password']
-            username = email.split("@")[0]
-            user = Profile.objects.create_user(
+            first_name      = form.cleaned_data['first_name']
+            last_name       = form.cleaned_data['last_name']
+            phone_number    = form.cleaned_data['phone_number']
+            email           = form.cleaned_data['email']
+            password        = form.cleaned_data['password']
+            username        = email.split("@")[0]
+            user            = Profile.objects.create_user(
                 first_name  = first_name,
                 last_name   = last_name,
                 email       = email,
@@ -34,16 +35,16 @@ def register(request):
                 )
             user.phone_number = phone_number
             user.save()
-            current_site = get_current_site(request)
-            mail_subject = 'Please activate your account'
-            message = render_to_string('profiles/verification_email.html', {
+            current_site    = get_current_site(request)
+            mail_subject    = 'Please activate your account'
+            message         = render_to_string('profiles/verification_email.html', {
                 'user'  : user,
                 'domain': current_site,
                 'uid'   : urlsafe_base64_encode(force_bytes(user.pk)),
                 'token' : default_token_generator.make_token(user),
             })
-            to_email = email
-            send_email = EmailMessage(mail_subject, message, to=[to_email])
+            to_email    = email
+            send_email  = EmailMessage(mail_subject, message, to=[to_email])
             send_email.send()
             messages.success(request, 'Activation link sent to your email!')
             return redirect('/profiles/login/?command=verification&email='+email)
@@ -56,21 +57,21 @@ def register(request):
 
 
 
-#___________________________________________________________  LoginView
+#___________________________________________________________login
 def login(request):
 
     if request.method == "POST":
-        email = request.POST['email']
-        password = request.POST['password']
-        user = auth.authenticate(email=email, password=password)
+        email       = request.POST['email']
+        password    = request.POST['password']
+        user        = auth.authenticate(email=email, password=password)
 
         if user is not None:
             auth.login(request, user)
             messages.success(request, 'Login Successful!')
             url = request.META.get('HTTP_REFERER')
             try:
-                query = requests.utils.urlparse(url).query
-                params = dict(x.split('=') for x in query.split('&'))
+                query   = requests.utils.urlparse(url).query
+                params  = dict(x.split('=') for x in query.split('&'))
                 if 'next' in params:
                     nextPage = params['next']
                     return redirect(nextPage)
@@ -82,7 +83,7 @@ def login(request):
     return render(request, 'profiles/login.html')
 
 
-#___________________________________________________________  LogoutView
+#___________________________________________________________logout
 @login_required(login_url = 'login')
 def logout(request):
 
@@ -91,7 +92,7 @@ def logout(request):
     return redirect('login')
 
 
-#___________________________________________________________  ActivateView
+#___________________________________________________________activate
 def activate(request, uidb64, token):
 
     try:
@@ -110,18 +111,21 @@ def activate(request, uidb64, token):
     return redirect('register')
 
 
-#___________________________________________________________  DEF DASHBOARD
+#___________________________________________________________dashboard
 @login_required(login_url = 'login')
 def dashboard(request):
 
     userprofile = UserProfile.objects.get(user_id=request.user.id)
-    context = {
+    posts       = Post.objects.filter(user_id=request.user.id)
+    context     = {
         'userprofile': userprofile,
+        'posts': posts,
     }
     return render (request, 'profiles/dashboard.html', context)
 
 
-#___________________________________________________________  ResetPasswordView
+
+#___________________________________________________________reset_password
 def reset_password(request):
 
     if request.method == 'POST':
@@ -143,7 +147,7 @@ def reset_password(request):
 
 
 
-#___________________________________________________________  EditProfileView
+#___________________________________________________________edit_profile
 @login_required(login_url='login')
 def edit_profile(request):
 
@@ -169,7 +173,7 @@ def edit_profile(request):
     return render(request, 'profiles/edit_profile.html', context)
 
 
-#___________________________________________________________  ChangePasswordView
+#___________________________________________________________change_password
 @login_required(login_url='login')
 def change_password(request):
 
@@ -195,3 +199,12 @@ def change_password(request):
 
     return render(request, 'profiles/change_password.html')
 
+
+#___________________________________________________________user_posts
+@login_required
+def user_posts(request):
+    posts = Post.objects.filter(user_id=request.user.id)
+    context = {
+        'posts': posts,
+    }
+    return render(request, 'posts.html', context)

@@ -1,19 +1,10 @@
 from django.contrib import admin
-from .models import PostCategory, Post, Comment
-
-
-class CategoryAdmin(admin.ModelAdmin):
-    pass
+from .models import Post
 
 
 class PostAdmin(admin.ModelAdmin):
-    pass
+    list_display = ('title', 'created_on', 'user')  # Customize the columns displayed in the admin list view
+    list_filter = ('created_on', 'user')  # Add filters to the admin list view
 
 
-class CommentAdmin(admin.ModelAdmin):
-    pass
-
-
-admin.site.register(PostCategory, CategoryAdmin)
 admin.site.register(Post, PostAdmin)
-admin.site.register(Comment, CommentAdmin)
